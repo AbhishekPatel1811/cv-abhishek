@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const alt = "Abhishek Patel - AI-Native Full-Stack Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -35,7 +35,7 @@ export default function OgImage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <div style={{ fontSize: 40, fontWeight: 700, color: "#f6f5f1" }}>
+          <div style={{ display: "flex", fontSize: 40, fontWeight: 700, color: "#f6f5f1" }}>
             Abhishek Patel<span style={{ color: "#c9f24d" }}>.</span>
           </div>
           <div style={{ fontSize: 26, color: "#908f89" }}>AI-Native Full-Stack Engineer</div>
