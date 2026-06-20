@@ -1,0 +1,29 @@
+# Abhishek Patel - AI-Native Full-Stack Engineer
+
+> Mumbai, India. Builds and ships AI products. Two years of experience, multiple live AI SaaS products, and international client delivery. Founding-day engineer at Apex36 Technologies. Open to roles and freelance.
+
+## About
+- Role: AI-Native Full-Stack Engineer
+- Location: Mumbai, India
+- Strengths: Frontend architecture (React, Next.js, TypeScript, Tailwind, Motion), production AI (RAG, voice AI, Gemini, OpenAI), full-stack delivery, DevOps (Docker, GCP Cloud Run), and SEO/GEO.
+- Email: patelabhishek1811@gmail.com
+
+## Live products
+- BrandGen - brand-aligned AI image generator (solo POC, landing, growth): https://www.getbrandgen.com
+- ConvoAI - multi-persona voice AI receptionist (sole core-app developer): https://www.heyyconvo.com
+- Mappie.ai - AI that turns ideas into structured specs (core frontend architect): https://www.mappie.ai
+- Apex36 website - built from scratch, migrated Vercel to GCP, GEO-optimized: https://www.apex36tech.com
+
+## Client & open-source work
+- Sayyar - Oman's first transportation SaaS, sole frontend + backend developer: https://sayyar.om
+- StarTech - automated-trading control room dashboard (private client)
+- PiSolved platform + PiSolved Chat - redesign, admin dashboard, and a solo RAG chatbot
+- DevTinder - full-stack social platform, Node.js internals capstone: https://github.com/AbhishekPatel1811/DevTinder
+
+## Links
+- GitHub: https://github.com/AbhishekPatel1811
+- LinkedIn: https://www.linkedin.com/in/abhishek-patel18
+- X: https://x.com/abhishekPx18
+
+## Contact
+For roles, freelance, or project questions, email patelabhishek1811@gmail.com.

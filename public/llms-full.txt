@@ -1,0 +1,57 @@
+# Abhishek Patel - AI-Native Full-Stack Engineer (Full Profile)
+
+> Mumbai, India. AI-native full-stack engineer who builds and ships AI products. Two years of experience, multiple live AI SaaS products, and international client delivery. Founding-day engineer at Apex36 Technologies. Open to full-time roles and freelance.
+
+## Summary
+Abhishek Patel is a product-oriented, AI-native builder who has operated like a founding team member since day one. He ships across the full stack: frontend architecture, AI/RAG systems, voice AI, backend APIs, DevOps infrastructure, analytics, and SEO/GEO. He has built two live AI products from zero, delivered two production systems for paying clients in Oman, built an end-to-end RAG chatbot solo, and migrated production infrastructure from Vercel to Google Cloud Run.
+
+## Career timeline
+- 2018-2024: Engineering education - Diploma in Computer Engineering (90.74%) and B.E. Electronics & Computer Science (8.5/10), with NLP and Machine Learning coursework.
+- Jul 2024: Joined Apex36 Technologies as a founding-day engineer; first engineer on Mappie.ai.
+- Oct 2024-Jan 2025: Grew from frontend into full-stack; team-lead responsibilities; built the Apex36 marketing site from scratch.
+- Mar-Jun 2025: Represented the company externally via Vedteq (Oman) - redesigned the PiSolved platform and solo-built the PiSolved Chat RAG chatbot.
+- Jul-Dec 2025: International client delivery via Basira (Oman) - sole developer on Sayyar (transport SaaS, FE + BE) and StarTech (trading control room). Completed a deep Node.js internals course and shipped a full-stack capstone (DevTinder).
+- Jan 2026-present: Back at Apex36 - built BrandGen (solo 12-day POC to marketed product) and the core app for ConvoAI (voice receptionist).
+- 2026-ongoing: Contributing to frontier AI model evaluation (rubric design, golden-trajectory methodology, SFT data) and deepening system-design fundamentals.
+
+## Projects
+
+### BrandGen (live) - https://www.getbrandgen.com
+Brand-aligned AI image generator. Users upload a brand image or write guidelines, Gemini extracts the brand DNA, and the app generates on-brand creative. Abhishek built the public POC solo in 12 days, owned the landing page, and shipped three production PRs (SEO sprint, GEO audit implementation, full en/es/zh i18n). Drove 100% organic growth: 62 users, 700+ AI creatives, 1.1M+ tokens, zero ad spend. Stack: Next.js, TypeScript, Google Gemini, Better-Auth, Supabase, Tailwind, Framer Motion.
+
+### ConvoAI (live) - https://www.heyyconvo.com
+Multi-persona voice AI receptionist with six industry personas. Sole core-app developer. Built a voice protection system from scratch: error-rate circuit breaker (3 errors/60s with auto-recovery), queue watchdog, start-call guards, and provider fallback. Real-time transcript, AI-actions feed, and a WebGL-style audio visualizer. Stack: Next.js, TypeScript, VAPI Web SDK, Deepgram, Better-Auth, PostgreSQL.
+
+### Sayyar (private client, live) - https://sayyar.om
+Oman's first transportation SaaS. Sole frontend and backend developer. Frontend: Vite + React + TypeScript admin dashboard (fleet, bookings, payments, analytics), Mapbox GL live routes, Arabic/English RTL i18n. Backend: Express 5 over two MySQL databases via Drizzle ORM, JWT auth with server-side invalidation, geolib trip matching, cross-database joins for subscription bookings.
+
+### StarTech (private client)
+Automated-trading control room dashboard - the operator window into a Python trading engine. Sole frontend developer. Next.js dashboard over 12+ MongoDB collections: request management, live-trade lifecycle, positions/orders, a 40+ metric performance viewer (Sharpe, Sortino, Calmar, SQN), strategy browser, and engine health. Markets: crypto, forex, stocks, indices, commodities.
+
+### Mappie.ai (live) - https://www.mappie.ai
+AI SaaS that turns ideas into structured specs. First engineer on the product. Built the core frontend architecture, an embeddings-based vector search on ConvexDB, and a Lexical-based inline AI editor (Notion-like UX). Stack: Next.js, TypeScript, ConvexDB, OpenAI, Lexical.
+
+### PiSolved Chat (private client)
+End-to-end RAG chatbot built entirely solo in 6-7 weeks. Real-time streaming, thread-based persistent sessions, daily quotas, OpenAI Assistants API, PostgreSQL + Drizzle, Resend email workflow.
+
+### PiSolved Platform (live) - https://www.pisharp.com
+Led the platform redesign and architected the admin dashboard; added a comments system; managed CI/CD across three environments while leading a team of four. Later rebranded as PiSharp.
+
+### DevTinder (open source) - https://github.com/AbhishekPatel1811/DevTinder
+Full-stack social platform for developers (profiles, swipe/match, real-time chat, paginated feed). Capstone for a deep Node.js internals curriculum. Deployed end to end on AWS EC2 with Nginx + PM2. Stack: React (Vite), Node.js, Express, MongoDB, JWT, WebSockets.
+
+### Apex36 Website (live) - https://www.apex36tech.com
+Built from scratch (90+ SEO score, Firebase-backed blog), then migrated end to end from Vercel to Google Cloud Run (multi-stage Docker, Artifact Registry, External Load Balancer, managed SSL, OIDC CI/CD), and ran a GEO/AEO overhaul (server-rendered JSON-LD, sitemap expansion, AI-crawler allowlists, llms.txt). Implemented a GA4 taxonomy with 14 custom dimensions.
+
+## Skills
+- Frontend: React, Next.js (App Router, SSR), TypeScript, Tailwind CSS, Motion/Framer Motion, Vite, Radix/shadcn
+- AI & ML: OpenAI APIs, RAG systems, embeddings & vector search, Google Gemini, VAPI voice AI, AI evaluation & rubric design
+- Backend: Node.js, Express, REST APIs, Server Actions, Drizzle ORM, JWT
+- Databases: PostgreSQL, MySQL, MongoDB, Supabase, Firebase, ConvexDB
+- DevOps: Docker, Google Cloud Run, GitHub Actions CI/CD (OIDC), GCP Load Balancer + SSL, Artifact Registry
+- Analytics, SEO & GEO: GA4, PostHog, Schema.org/JSON-LD, GEO/AEO (llms.txt, AI crawlers), Mapbox GL, i18n (en/es/zh, RTL)
+
+## Contact
+- Email: patelabhishek1811@gmail.com
+- GitHub: https://github.com/AbhishekPatel1811
+- LinkedIn: https://www.linkedin.com/in/abhishek-patel18
