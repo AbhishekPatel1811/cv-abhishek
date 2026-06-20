@@ -1,8 +1,16 @@
 import { profile } from "@/lib/content/profile";
 import { skillGroups } from "@/lib/content/skills";
 
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://abhishekpatel.dev";
+// Normalize the configured site URL: tolerate a missing protocol and trailing slash,
+// so `new URL(siteUrl)` (metadataBase) never throws during build.
+function normalizeSiteUrl(raw?: string): string {
+  const fallback = "https://abhishekpatel.dev";
+  const v = raw?.trim().replace(/\/+$/, "");
+  if (!v) return fallback;
+  return /^https?:\/\//i.test(v) ? v : `https://${v}`;
+}
+
+export const siteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 const knowsAbout = Array.from(new Set(skillGroups.flatMap((g) => g.skills)));
 
