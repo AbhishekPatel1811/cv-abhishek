@@ -1,65 +1,99 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
-  ABHISHEK PATEL - PORTFOLIO DESIGN SYSTEM
-  Editorial-tech identity. Dark canvas + one signature accent.
-  Everything is a token here - retheme the whole site by editing values below.
+  THEME TOKENS - shadcn / tweakcn convention.
+  To re-theme: design at https://tweakcn.com, then paste its `:root {}` and `.dark {}`
+  VALUE blocks over the two blocks below. Keep the `@theme inline` mapping that follows -
+  it wires these variables into every component in the site.
 */
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(222 24% 12%);
+  --card: hsl(240 6% 97%);
+  --card-foreground: hsl(222 24% 12%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(222 24% 12%);
+  --primary: hsl(243 75% 58%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(240 5% 95%);
+  --secondary-foreground: hsl(222 24% 12%);
+  --muted: hsl(240 5% 95%);
+  --muted-foreground: hsl(240 4% 44%);
+  --accent: hsl(240 5% 93%);
+  --accent-foreground: hsl(222 24% 12%);
+  --border: hsl(240 6% 89%);
+  --input: hsl(240 6% 89%);
+  --ring: hsl(243 75% 58%);
+  --amber: hsl(35 92% 42%);
+  --radius: 0.9rem;
+}
 
-@theme {
-  /* surfaces */
-  --color-bg: #0b0b0c;
-  --color-bg-2: #0f0f11;
-  --color-surface: #141417;
-  --color-surface-2: #1b1b1f;
-  --color-line: #26262b;
+.dark {
+  --background: hsl(222 26% 7%);
+  --foreground: hsl(220 16% 92%);
+  --card: hsl(222 22% 11%);
+  --card-foreground: hsl(220 16% 92%);
+  --popover: hsl(222 22% 11%);
+  --popover-foreground: hsl(220 16% 92%);
+  --primary: hsl(244 80% 68%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(222 16% 15%);
+  --secondary-foreground: hsl(220 16% 92%);
+  --muted: hsl(222 16% 15%);
+  --muted-foreground: hsl(220 10% 64%);
+  --accent: hsl(222 16% 17%);
+  --accent-foreground: hsl(220 16% 92%);
+  --border: hsl(222 14% 19%);
+  --input: hsl(222 14% 19%);
+  --ring: hsl(244 80% 68%);
+  --amber: hsl(38 95% 60%);
+}
 
-  /* ink */
-  --color-ink: #f6f5f1;
-  --color-ink-soft: #c7c7c1;
-  --color-muted: #908f89;
-  --color-faint: #5e5e58;
-
-  /* signature accent (default = electric lime). amber alt kept as a token. */
-  --color-accent: #c9f24d;
-  --color-accent-ink: #0b0b0c;
-  --color-amber: #ffb224;
-
+@theme inline {
   /* type */
-  --font-display: "Clash Display", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-body: "General Sans", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: "Sora", "IBM Plex Sans", var(--font-geist-sans), sans-serif;
+  --font-serif: "IBM Plex Sans", var(--font-geist-sans), sans-serif;
 
-  /* shape */
-  --radius: 16px;
+  /* app tokens -> theme variables (everything themes via these) */
+  --color-bg: var(--background);
+  --color-bg-2: var(--card);
+  --color-surface: var(--secondary);
+  --color-surface-2: var(--muted);
+  --color-line: var(--border);
+  --color-ink: var(--foreground);
+  --color-ink-soft: color-mix(in oklab, var(--foreground) 82%, var(--background));
+  --color-muted: var(--muted-foreground);
+  --color-faint: color-mix(in oklab, var(--muted-foreground) 70%, var(--background));
+  --color-accent: var(--primary);
+  --color-accent-ink: var(--primary-foreground);
+  --color-amber: var(--amber);
 }
 
 @layer base {
-  :root {
-    color-scheme: dark;
-  }
+  :root { color-scheme: light; }
+  .dark { color-scheme: dark; }
 
   * {
     border-color: var(--color-line);
   }
-
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);
-    font-family: var(--font-body);
+    font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv01";
   }
-
   ::selection {
     background: var(--color-accent);
     color: var(--color-accent-ink);
   }
-
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
@@ -67,34 +101,32 @@
   }
 }
 
-/* ---- font helpers (used by the hero mockups) ---- */
-.font-clash   { font-family: "Clash Display", var(--font-geist-sans), sans-serif; }
-.font-general { font-family: "General Sans", var(--font-geist-sans), sans-serif; }
-.font-satoshi { font-family: "Satoshi", var(--font-geist-sans), sans-serif; }
-.font-geist   { font-family: var(--font-geist-sans), sans-serif; }
+/* ---- font helpers ---- */
+.font-clash   { font-family: var(--font-display); }
+.font-general { font-family: var(--font-sans); }
+.font-satoshi { font-family: var(--font-sans); }
+.font-geist   { font-family: var(--font-sans); }
+.font-serif   { font-family: var(--font-serif); }
 .font-mono    { font-family: var(--font-mono); }
-.font-serif   { font-family: "Instrument Serif", Georgia, serif; }
 
-/* ---- atmosphere: dot grid + accent glow + grain ---- */
+/* ---- atmosphere ---- */
 .bg-dotgrid {
   background-image: radial-gradient(circle at center, var(--color-line) 1px, transparent 1px);
   background-size: 26px 26px;
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
 }
-
 .accent-glow::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse 50% 45% at 50% 8%,
-    color-mix(in oklab, var(--color-accent) 22%, transparent),
+    color-mix(in oklab, var(--color-accent) 20%, transparent),
     transparent 70%
   );
   pointer-events: none;
 }
-
 .grain::after {
   content: "";
   position: absolute;
@@ -109,55 +141,54 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 32s linear infinite;
-}
+.animate-marquee { animation: marquee 32s linear infinite; }
 .marquee-mask {
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-/* scroll indicator (hero) */
+/* ---- scroll indicator ---- */
 @keyframes scroll-down {
   0% { transform: translateY(-120%); }
   100% { transform: translateY(220%); }
 }
 .animate-scroll-down { animation: scroll-down 1.7s ease-in-out infinite; }
 
-/* halftone dot texture for image cards */
+/* ---- halftone texture for image cards ---- */
 .halftone {
   background-image: radial-gradient(circle, rgba(0, 0, 0, 0.55) 1px, transparent 1px);
   background-size: 4px 4px;
 }
 
-/* animated accent gradient (lime shimmer) for hover borders */
+/* ---- animated accent shimmer (theme-aware) ---- */
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 .accent-shimmer {
-  background: linear-gradient(90deg, var(--color-accent), #eafff0, var(--color-accent));
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    color-mix(in oklab, var(--color-accent) 38%, white),
+    var(--color-accent)
+  );
   background-size: 200% 100%;
   animation: gradient-shift 4s ease infinite;
 }
 
-/* no-JS / fallback: ensure the loader can never get stuck covering content */
+/* ---- loader no-JS fallback ---- */
 @keyframes loader-autohide {
   to { opacity: 0; visibility: hidden; transform: translateY(-100%); }
 }
 .loader-auto { animation: loader-autohide 0.6s 3.4s forwards; }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee { animation: none; }
-  .loader-auto { animation: none; }
-  .animate-scroll-down { animation: none; }
-  .accent-shimmer { animation: none; }
-
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .animate-marquee, .loader-auto, .animate-scroll-down, .accent-shimmer { animation: none; }
 }

@@ -75,7 +75,7 @@ export function Hero() {
           {profile.location} - {profile.available}
         </motion.div>
 
-        <h1 className="font-clash max-w-[15ch] text-[clamp(2.8rem,8.5vw,7.2rem)] font-semibold leading-[0.93] tracking-[-0.03em] text-ink">
+        <h1 className="font-clash max-w-[15ch] text-[clamp(2.8rem,8.5vw,7.2rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-ink">
           <Line delay={0.05}>I build &amp; ship</Line>
           <Line delay={0.15}>AI products that</Line>
           <Line delay={0.25}>
@@ -101,7 +101,7 @@ export function Hero() {
           className="mt-6 flex items-center gap-2 text-base text-muted"
         >
           <span className="font-mono text-xs uppercase tracking-widest text-faint">Lately:</span>
-          <span className="relative inline-flex h-7 overflow-hidden">
+          <span className="relative inline-flex h-9 items-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={role}
@@ -169,8 +169,9 @@ export function Hero() {
 }
 
 function Line({ children, delay }: { children: React.ReactNode; delay: number }) {
+  // pb gives descenders (g, y, p - especially the serif italic) room so they aren't clipped
   return (
-    <span className="block overflow-hidden">
+    <span className="block overflow-hidden pb-[0.14em]">
       <motion.span
         className="block"
         initial={{ y: "108%" }}

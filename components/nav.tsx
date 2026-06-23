@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { openChat } from "@/components/ai/chat-events";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const LINKS = [
   { label: "Work", href: "/work" },
@@ -44,6 +45,7 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <button
             onClick={() => openChat()}
             className="hidden rounded-full bg-accent px-4 py-2 text-sm font-semibold text-[color:var(--color-accent-ink)] transition-transform hover:scale-[1.03] sm:block"
