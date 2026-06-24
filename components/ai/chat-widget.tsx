@@ -163,7 +163,7 @@ export function ChatWidget() {
             className="fixed bottom-5 right-5 z-[110] flex items-center gap-3 rounded-full border border-line bg-surface/90 px-4 py-3 text-sm font-medium text-ink shadow-2xl backdrop-blur-xl transition-colors hover:border-accent"
           >
             <span className="relative h-9 w-9 overflow-hidden rounded-full">
-              <Image src="/abhishek.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
+              <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
               <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-accent ring-2 ring-surface" />
             </span>
             Ask my AI
@@ -185,7 +185,7 @@ export function ChatWidget() {
             <div className="flex items-center justify-between border-b border-line px-4 py-3.5">
               <div className="flex items-center gap-3">
                 <span className="relative h-9 w-9 overflow-hidden rounded-full">
-                  <Image src="/abhishek.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
+                  <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
                 </span>
                 <div>
                   <div className="text-sm font-semibold text-ink">Ask Abhishek</div>

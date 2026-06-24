@@ -59,7 +59,7 @@ export default function AboutPage() {
               <Magnet strength={0.12} radius={200}>
                 <div className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-bg-2">
                   <Image
-                    src="/abhishek.jpeg"
+                    src="/abhishek-light.jpeg"
                     alt={profile.name}
                     fill
                     sizes="(min-width:1024px) 320px, 90vw"

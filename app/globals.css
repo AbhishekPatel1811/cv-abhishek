@@ -9,45 +9,46 @@
   it wires these variables into every component in the site.
 */
 :root {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(222 24% 12%);
-  --card: hsl(240 6% 97%);
-  --card-foreground: hsl(222 24% 12%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(222 24% 12%);
-  --primary: hsl(243 75% 58%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(240 5% 95%);
-  --secondary-foreground: hsl(222 24% 12%);
-  --muted: hsl(240 5% 95%);
-  --muted-foreground: hsl(240 4% 44%);
-  --accent: hsl(240 5% 93%);
-  --accent-foreground: hsl(222 24% 12%);
-  --border: hsl(240 6% 89%);
-  --input: hsl(240 6% 89%);
-  --ring: hsl(243 75% 58%);
+  --background: oklch(1.0000 0 0);
+  --foreground: oklch(0.3211 0 0);
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.3211 0 0);
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.3211 0 0);
+  --primary: oklch(0.6231 0.1880 259.8145);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.9670 0.0029 264.5419);
+  --secondary-foreground: oklch(0.4461 0.0263 256.8018);
+  --muted: oklch(0.9846 0.0017 247.8389);
+  --muted-foreground: oklch(0.5510 0.0234 264.3637);
+  --accent: oklch(0.9514 0.0250 236.8242);
+  --accent-foreground: oklch(0.3791 0.1378 265.5222);
+  --border: oklch(0.9276 0.0058 264.5313);
+  --input: oklch(0.9276 0.0058 264.5313);
+  --ring: oklch(0.6231 0.1880 259.8145);
   --amber: hsl(35 92% 42%);
   --radius: 0.9rem;
 }
 
 .dark {
-  --background: hsl(222 26% 7%);
-  --foreground: hsl(220 16% 92%);
-  --card: hsl(222 22% 11%);
-  --card-foreground: hsl(220 16% 92%);
-  --popover: hsl(222 22% 11%);
-  --popover-foreground: hsl(220 16% 92%);
-  --primary: hsl(244 80% 68%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(222 16% 15%);
-  --secondary-foreground: hsl(220 16% 92%);
-  --muted: hsl(222 16% 15%);
-  --muted-foreground: hsl(220 10% 64%);
-  --accent: hsl(222 16% 17%);
-  --accent-foreground: hsl(220 16% 92%);
-  --border: hsl(222 14% 19%);
-  --input: hsl(222 14% 19%);
-  --ring: hsl(244 80% 68%);
+  /* deepened to a faintly-blue near-black (keeps the tweakcn blue primary) */
+  --background: oklch(0.1500 0.0120 264);
+  --foreground: oklch(0.9219 0 0);
+  --card: oklch(0.1950 0.0120 264);
+  --card-foreground: oklch(0.9219 0 0);
+  --popover: oklch(0.1950 0.0120 264);
+  --popover-foreground: oklch(0.9219 0 0);
+  --primary: oklch(0.6231 0.1880 259.8145);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.2150 0.0120 264);
+  --secondary-foreground: oklch(0.9219 0 0);
+  --muted: oklch(0.1950 0.0100 264);
+  --muted-foreground: oklch(0.7155 0.0150 264);
+  --accent: oklch(0.3791 0.1378 265.5222);
+  --accent-foreground: oklch(0.8823 0.0571 254.1284);
+  --border: oklch(0.2750 0.0120 264);
+  --input: oklch(0.2750 0.0120 264);
+  --ring: oklch(0.6231 0.1880 259.8145);
   --amber: hsl(38 95% 60%);
 }
 
@@ -71,6 +72,14 @@
   --color-accent: var(--primary);
   --color-accent-ink: var(--primary-foreground);
   --color-amber: var(--amber);
+
+  /* Aceternity Aurora Background */
+  --animate-aurora: aurora 60s linear infinite;
+}
+
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to { background-position: 350% 50%, 350% 50%; }
 }
 
 @layer base {
