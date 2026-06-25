@@ -1,7 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Lock } from "lucide-react";
 import { Pill } from "@/components/pill";
 import type { Project } from "@/lib/content/types";
 import { cn } from "@/lib/utils";
+
+const SHOTS: Record<string, string> = {
+  brandgen: "/shots/brandgen.png",
+  convoai: "/shots/convoai.png",
+  "mappie-ai": "/shots/mappie-ai.png",
+  "pisolved-platform": "/shots/pisolved-platform.png",
+  "apex36-website": "/shots/apex36-website.png",
+};
 
 export function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
   return (
@@ -21,6 +31,25 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
           {project.isPrivate ? "Private" : project.status}
         </Pill>
       </div>
+
+      {/* screenshot thumbnail / NDA placeholder */}
+      {SHOTS[project.slug] ? (
+        <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-lg border border-line">
+          <Image
+            src={SHOTS[project.slug]}
+            alt={`${project.name} screenshot`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-top"
+          />
+        </div>
+      ) : project.isPrivate ? (
+        <div className="mt-6 flex aspect-[16/9] w-full items-center justify-center rounded-lg border border-line bg-bg">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
+            <Lock className="size-3" /> NDA
+          </span>
+        </div>
+      ) : null}
 
       {/* body */}
       <div className="mt-8 flex flex-1 flex-col">

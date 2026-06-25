@@ -53,7 +53,7 @@ export function Impact() {
   return (
     <SectionShell id="impact" padding="lg">
       <SectionHeading
-        index="06"
+        index="07"
         kicker="By the numbers"
         title={<>Outcomes, not <Accent>adjectives.</Accent></>}
       />

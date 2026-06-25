@@ -1,21 +1,7 @@
 import type { TimelineEntry } from "./types";
 
-// Career arc, public + positive framing only.
-export const timeline: TimelineEntry[] = [
-  {
-    period: "2018 - 2024",
-    title: "Engineering education",
-    org: "Diploma (MSBTE) + B.E. Electronics & Computer Science",
-    location: "Mumbai, India",
-    summary:
-      "Six structured years of engineering. Built the fundamentals - DSA, OOP, software engineering - then layered NLP, Machine Learning, DBMS and Networks on top.",
-    highlights: [
-      "Diploma in Computer Engineering - 90.74%",
-      "B.E. Electronics & Computer Science - 8.5/10 GPA",
-      "NLP & ML coursework that became useful within months of graduating",
-    ],
-    tags: ["Foundations", "NLP", "ML"],
-  },
+// Career experience, Jul 2024 -> present. Public + positive framing only.
+export const experience: TimelineEntry[] = [
   {
     period: "Jul 2024",
     title: "Founding-day engineer",
@@ -96,3 +82,24 @@ export const timeline: TimelineEntry[] = [
     tags: ["AI evaluation", "System design", "Learning"],
   },
 ];
+
+// Formal education - a small, separate section.
+export const education: TimelineEntry[] = [
+  {
+    period: "2018 - 2024",
+    title: "Engineering education",
+    org: "Diploma (MSBTE) + B.E. Electronics & Computer Science",
+    location: "Mumbai, India",
+    summary:
+      "Six structured years of engineering. Built the fundamentals - DSA, OOP, software engineering - then layered NLP, Machine Learning, DBMS and Networks on top.",
+    highlights: [
+      "Diploma in Computer Engineering - 90.74%",
+      "B.E. Electronics & Computer Science - 8.5/10 GPA",
+      "NLP & ML coursework that became useful within months of graduating",
+    ],
+    tags: ["Foundations", "NLP", "ML"],
+  },
+];
+
+// Back-compat: full arc (education first), in case any view wants the whole timeline.
+export const timeline: TimelineEntry[] = [...education, ...experience];

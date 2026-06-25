@@ -34,7 +34,11 @@ export function Story() {
       <SectionHeading
         index="01"
         kicker="Who I am"
-        title={<>A product-oriented, AI-native <Accent>builder.</Accent></>}
+        title={
+          <>
+            A product-oriented, AI-native <Accent>builder.</Accent>
+          </>
+        }
       />
 
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
@@ -43,9 +47,10 @@ export function Story() {
             {profile.intro}
           </p>
           <p className="mt-6 text-base leading-relaxed text-ink-soft">
-            I have been operating like a founding team member since day one - shipping marketing
-            when no one else would, migrating infrastructure when bills got too big, and writing
-            the onboarding doc, the deployment guide and the rubric, then executing the task.
+            I have been operating like a founding team member since day one -
+            shipping marketing when no one else would, migrating infrastructure
+            when bills got too big, and writing the onboarding doc, the
+            deployment guide and the rubric, then executing the task.
           </p>
         </Reveal>
 
@@ -56,7 +61,7 @@ export function Story() {
               alt={profile.name}
               width={640}
               height={720}
-              className="aspect-[4/5] w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+              className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
             />
             <figcaption className="flex items-center justify-between border-t border-line px-5 py-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               <span>{profile.name}</span>
@@ -72,8 +77,14 @@ export function Story() {
           return (
             <Reveal key={p.k} delay={i * 0.06} className="bg-bg-2">
               <div className="flex h-full flex-col p-6">
-                <Icon className="h-5 w-5 text-ink" strokeWidth={1.5} aria-hidden />
-                <h3 className="mt-4 text-base font-semibold tracking-[-0.01em] text-ink">{p.k}</h3>
+                <Icon
+                  className="h-5 w-5 text-ink"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                <h3 className="mt-4 text-base font-semibold tracking-[-0.01em] text-ink">
+                  {p.k}
+                </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{p.v}</p>
               </div>
             </Reveal>

@@ -19,7 +19,7 @@ export function AskAiSection() {
   return (
     <SectionShell padding="lg">
       <SectionHeading
-        index="05"
+        index="06"
         kicker="Ask my AI"
         align="center"
         title={

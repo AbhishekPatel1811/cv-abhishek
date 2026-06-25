@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, ExternalLink, Lock } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
@@ -25,6 +26,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
+const SHOTS: Record<string, string> = {
+  brandgen: "/shots/brandgen.png",
+  convoai: "/shots/convoai.png",
+  "mappie-ai": "/shots/mappie-ai.png",
+  "pisolved-platform": "/shots/pisolved-platform.png",
+  "apex36-website": "/shots/apex36-website.png",
+};
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -179,9 +188,22 @@ export default async function CaseStudyPage({
           </div>
         </header>
 
-        {/* hero: AppWindow live-preview mockup, or NDA panel for private */}
+        {/* hero: real screenshot, NDA panel for private, or faux mockup */}
         <Reveal className="mt-10">
-          {project.isPrivate ? (
+          {SHOTS[slug] ? (
+            <AppWindow title={project.name} bodyClassName="p-0">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={SHOTS[slug]}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  priority
+                  sizes="(max-width: 896px) 100vw, 896px"
+                  className="object-cover object-top"
+                />
+              </div>
+            </AppWindow>
+          ) : project.isPrivate ? (
             <div className="rounded-xl border border-line bg-bg-2 p-10 text-center">
               <div className="mx-auto inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-faint">
                 <Lock className="size-3.5" /> Visuals under NDA

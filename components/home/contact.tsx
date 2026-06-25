@@ -15,7 +15,7 @@ export function Contact() {
   return (
     <SectionShell id="contact" padding="lg">
       <SectionHeading
-        index="07"
+        index="08"
         kicker="Contact"
         align="center"
         title={

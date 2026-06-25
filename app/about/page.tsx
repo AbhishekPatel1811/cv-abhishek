@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Accent } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { TimelineSection } from "@/components/home/timeline-section";
+import { ExperienceSection } from "@/components/home/experience-section";
 import { SkillsSection } from "@/components/home/skills-section";
+import { EducationSection } from "@/components/home/education-section";
 import { Contact } from "@/components/home/contact";
 import { profile } from "@/lib/content/profile";
 
@@ -21,9 +22,9 @@ const SEEKING = [
 ];
 
 const NARRATIVE = [
-  "I started my career on the day my company opened its doors. Employee number one, treated as a core operator from the first hour - not a junior hire waiting for permission. That framing stuck. I have spent two years operating like a founding team member: building the first version, then the marketing, then the infrastructure when the bills got too big.",
-  "Hired as a frontend intern, I ended up owning backend APIs, a Vercel-to-GCP infrastructure migration, analytics taxonomies, and SEO/GEO work - because those were the gaps, and someone had to fill them. Along the way I shipped two live AI products, delivered two production systems for real paying clients in Oman, and built an end-to-end RAG chatbot solo.",
-  "I use AI tools - Cursor, Claude Code, Codex - as force multipliers. They let me ship like a small team. But I have learned exactly where the line is: AI amplifies judgment, it does not replace it. Every new domain I enter becomes a written playbook, because the work is not finished until it is repeatable.",
+  "Employee number one at Apex36 - on the company's founding day, treated as a core operator from the first hour. I didn't wait for permission; I built the first version, then the marketing, then the infrastructure when the bills got too big.",
+  "Hired as a frontend intern, I ended up owning the full stack: backend APIs, AI/RAG and voice systems, a Vercel-to-GCP migration, analytics, SEO/GEO. I shipped live AI products, delivered production systems for paying clients in Oman, and built an end-to-end RAG chatbot solo - because those were the gaps, and someone had to fill them.",
+  "I use AI tools as force multipliers, not crutches - they let me ship like a team while I keep the judgment. Every new domain becomes a written playbook. Now I'm back doing what I do best: building AI products that get used.",
 ];
 
 export default function AboutPage() {
@@ -43,7 +44,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_320px] lg:items-start">
             <Reveal>
               <h1 className="max-w-3xl text-[clamp(2.4rem,6vw,5rem)] font-semibold leading-[1.0] tracking-[-0.03em] text-ink">
-                I build the thing that doesn&apos;t <Accent>exist yet.</Accent>
+                AI-native engineer who ships the thing that doesn&apos;t <Accent>exist yet.</Accent>
               </h1>
               <div className="mt-10 max-w-2xl space-y-5">
                 {NARRATIVE.map((p) => (
@@ -114,8 +115,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <TimelineSection />
+      <ExperienceSection />
       <SkillsSection />
+      <EducationSection />
       <Contact />
     </div>
   );

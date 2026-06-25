@@ -9,8 +9,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { AnchorButton } from "@/components/anchor-button";
 
 const LINKS = [
+  { label: "Experience", href: "/#experience" },
   { label: "Work", href: "/work" },
-  { label: "Story", href: "/#story" },
   { label: "Skills", href: "/#skills" },
   { label: "Contact", href: "/#contact" },
 ];

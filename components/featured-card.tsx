@@ -1,8 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Lock } from "lucide-react";
 import { Pill } from "@/components/pill";
 import { AppWindow } from "@/components/app-window";
 import type { Project } from "@/lib/content/types";
 import { cn } from "@/lib/utils";
+
+const SHOTS: Record<string, string> = {
+  // brandgen cover image intentionally omitted from the Selected Work section
+  convoai: "/shots/convoai.png",
+  "mappie-ai": "/shots/mappie-ai.png",
+  "pisolved-platform": "/shots/pisolved-platform.png",
+  "apex36-website": "/shots/apex36-website.png",
+};
 
 export function FeaturedCard({
   project,
@@ -29,21 +39,46 @@ export function FeaturedCard({
         </Pill>
       </div>
 
-      {/* large: stylized app-window mockup (no real screenshot) */}
+      {/* large: app-window with real screenshot, NDA panel, or faux mockup */}
       {large && (
         <div className="mt-6">
-          <AppWindow title={project.name} bodyClassName="p-5">
-            <div className="text-base font-semibold tracking-tight text-ink">
-              {project.name}
-            </div>
-            <p className="mt-1.5 max-w-md text-xs leading-relaxed text-muted">
-              {project.tagline}
-            </p>
-            <div className="mt-4 space-y-2">
-              <div className="h-2 w-4/5 rounded-full border border-line" />
-              <div className="h-2 w-3/5 rounded-full border border-line" />
-            </div>
-          </AppWindow>
+          {SHOTS[project.slug] ? (
+            <AppWindow title={project.name} bodyClassName="p-0">
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={SHOTS[project.slug]}
+                  alt={`${project.name} screenshot`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-top"
+                />
+              </div>
+            </AppWindow>
+          ) : project.isPrivate ? (
+            <AppWindow title={project.name} bodyClassName="p-8">
+              <div className="flex flex-col items-center text-center">
+                <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-faint">
+                  <Lock className="size-3.5" /> Visuals under NDA
+                </span>
+                <p className="mt-3 max-w-xs text-xs leading-relaxed text-muted">
+                  {project.tagline}
+                </p>
+              </div>
+            </AppWindow>
+          ) : (
+            <AppWindow title={project.name} bodyClassName="p-5">
+              <div className="text-base font-semibold tracking-tight text-ink">
+                {project.name}
+              </div>
+              <p className="mt-1.5 max-w-md text-xs leading-relaxed text-muted">
+                {project.tagline}
+              </p>
+              <div className="mt-4 space-y-2">
+                <div className="h-2 w-4/5 rounded-full border border-line" />
+                <div className="h-2 w-3/5 rounded-full border border-line" />
+              </div>
+            </AppWindow>
+          )}
         </div>
       )}
 
