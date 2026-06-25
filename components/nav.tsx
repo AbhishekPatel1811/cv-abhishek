@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { openChat } from "@/components/ai/chat-events";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AnchorButton } from "@/components/anchor-button";
 
 const LINKS = [
   { label: "Work", href: "/work" },
@@ -13,12 +15,23 @@ const LINKS = [
   { label: "Contact", href: "/#contact" },
 ];
 
+function Mark() {
+  return (
+    <Link href="/" className="flex items-center gap-2.5">
+      <span className="flex h-7 w-7 items-center justify-center rounded-md bg-ink font-mono text-sm font-bold text-bg">
+        A
+      </span>
+      <span className="text-[15px] font-semibold tracking-tight text-ink">Abhishek Patel</span>
+    </Link>
+  );
+}
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,16 +40,16 @@ export function Nav() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[100] transition-colors duration-300",
-        scrolled ? "border-b border-line bg-bg/80 backdrop-blur-xl" : "border-b border-transparent"
+        "fixed inset-x-0 top-0 z-[100] border-b transition-colors duration-300",
+        scrolled ? "border-line bg-bg/80 backdrop-blur-xl" : "border-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link href="/" className="font-clash text-lg font-semibold tracking-tight text-ink">
-          Abhishek<span className="text-accent">.</span>
-        </Link>
+      <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-5 py-3.5 sm:px-8">
+        <div className="justify-self-start">
+          <Mark />
+        </div>
 
-        <nav className="hidden items-center gap-8 text-sm text-ink-soft md:flex">
+        <nav className="hidden items-center gap-8 justify-self-center text-sm text-muted md:flex">
           {LINKS.map((l) => (
             <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
               {l.label}
@@ -44,46 +57,41 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 justify-self-end">
           <ThemeToggle />
-          <button
-            onClick={() => openChat()}
-            className="hidden rounded-full bg-accent px-4 py-2 text-sm font-semibold text-[color:var(--color-accent-ink)] transition-transform hover:scale-[1.03] sm:block"
-          >
-            Ask my AI
-          </button>
+          <span className="hidden sm:block">
+            <AnchorButton onClick={() => openChat()} size="sm">
+              Ask my AI
+            </AnchorButton>
+          </span>
           <button
             aria-label="Menu"
             onClick={() => setOpen((o) => !o)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink md:hidden"
           >
-            <span className="sr-only">Menu</span>
-            <div className="space-y-1.5">
-              <span className={cn("block h-px w-5 bg-ink transition", open && "translate-y-[6px] rotate-45")} />
-              <span className={cn("block h-px w-5 bg-ink transition", open && "opacity-0")} />
-              <span className={cn("block h-px w-5 bg-ink transition", open && "-translate-y-[6px] -rotate-45")} />
-            </div>
+            {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="border-t border-line bg-bg/95 px-5 py-4 md:hidden">
-          <nav className="flex flex-col gap-4 text-base text-ink-soft">
+        <div className="border-t border-line bg-bg/95 px-5 py-4 backdrop-blur-xl md:hidden">
+          <nav className="flex flex-col gap-4 text-base text-muted">
             {LINKS.map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="hover:text-ink">
                 {l.label}
               </Link>
             ))}
-            <button
+            <AnchorButton
               onClick={() => {
                 setOpen(false);
                 openChat();
               }}
-              className="mt-1 self-start rounded-full bg-accent px-4 py-2 text-sm font-semibold text-[color:var(--color-accent-ink)]"
+              size="sm"
+              className="mt-1 self-start"
             >
               Ask my AI
-            </button>
+            </AnchorButton>
           </nav>
         </div>
       )}

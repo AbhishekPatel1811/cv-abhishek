@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { FaArrowUp, FaXmark, FaMicrophone, FaStop } from "react-icons/fa6";
+import { ArrowUp, X, Mic, Square } from "lucide-react";
 import { profile } from "@/lib/content/profile";
 import { CHAT_OPEN_EVENT } from "@/components/ai/chat-events";
 import { useVoice } from "@/components/ai/use-voice";
@@ -163,7 +163,7 @@ export function ChatWidget() {
             className="fixed bottom-5 right-5 z-[110] flex items-center gap-3 rounded-full border border-line bg-surface/90 px-4 py-3 text-sm font-medium text-ink shadow-2xl backdrop-blur-xl transition-colors hover:border-accent"
           >
             <span className="relative h-9 w-9 overflow-hidden rounded-full">
-              <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
+              <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover grayscale" />
               <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-accent ring-2 ring-surface" />
             </span>
             Ask my AI
@@ -185,7 +185,7 @@ export function ChatWidget() {
             <div className="flex items-center justify-between border-b border-line px-4 py-3.5">
               <div className="flex items-center gap-3">
                 <span className="relative h-9 w-9 overflow-hidden rounded-full">
-                  <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover" />
+                  <Image src="/abhishek-light.jpeg" alt="Abhishek" fill sizes="36px" className="object-cover grayscale" />
                 </span>
                 <div>
                   <div className="text-sm font-semibold text-ink">Ask Abhishek</div>
@@ -204,14 +204,14 @@ export function ChatWidget() {
                     voice.status === "live" && "border-accent bg-accent text-[color:var(--color-accent-ink)]"
                   )}
                 >
-                  {voice.status === "live" ? <FaStop size={12} /> : <FaMicrophone size={12} />}
+                  {voice.status === "live" ? <Square className="size-3.5" /> : <Mic className="size-3.5" />}
                 </button>
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Close"
                   className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:text-ink"
                 >
-                  <FaXmark size={14} />
+                  <X className="size-3.5" />
                 </button>
               </div>
             </div>
@@ -311,7 +311,7 @@ export function ChatWidget() {
                   aria-label="Send"
                   className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-[color:var(--color-accent-ink)] transition disabled:opacity-30"
                 >
-                  <FaArrowUp size={13} />
+                  <ArrowUp className="size-3.5" />
                 </button>
               </div>
             </form>

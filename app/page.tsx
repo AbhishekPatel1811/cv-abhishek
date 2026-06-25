@@ -6,7 +6,6 @@ import { FeaturedWork } from "@/components/home/featured-work";
 import { SkillsSection } from "@/components/home/skills-section";
 import { AskAiSection } from "@/components/home/ask-ai-section";
 import { Impact } from "@/components/home/impact";
-import { Writing } from "@/components/home/writing";
 import { Contact } from "@/components/home/contact";
 
 export default function HomePage() {
@@ -20,7 +19,6 @@ export default function HomePage() {
       <SkillsSection />
       <AskAiSection />
       <Impact />
-      <Writing />
       <Contact />
     </>
   );

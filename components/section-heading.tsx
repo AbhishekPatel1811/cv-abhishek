@@ -2,30 +2,42 @@ import type { ReactNode } from "react";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 
-// Editorial accent word, rendered in the serif italic display face.
+// Editorial accent word - serif italic (Georgia) for elegant contrast inside the geometric sans.
+// Monochrome: emphasis comes from the typeface switch, not color.
 export function Accent({ children }: { children: ReactNode }) {
-  return <span className="font-serif font-normal italic tracking-normal text-accent">{children}</span>;
+  return <span className="font-serif font-normal italic">{children}</span>;
 }
 
 export function SectionHeading({
   index,
   kicker,
   title,
+  align = "left",
   className,
 }: {
   index: string;
   kicker: string;
   title: ReactNode;
+  align?: "left" | "center";
   className?: string;
 }) {
   return (
-    <Reveal className={cn("mb-12", className)}>
-      <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-muted">
-        <span className="text-accent">{index}</span>
-        <span className="h-px w-8 bg-line" />
+    <Reveal className={cn("mb-12", align === "center" && "text-center", className)}>
+      <div
+        className={cn(
+          "flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted",
+          align === "center" && "justify-center",
+        )}
+      >
+        <span className="rounded border border-line px-1.5 py-0.5 text-faint">{index}</span>
         <span>{kicker}</span>
       </div>
-      <h2 className="mt-4 max-w-3xl text-[clamp(2rem,4.4vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-ink">
+      <h2
+        className={cn(
+          "mt-4 text-[clamp(1.9rem,4.2vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-ink",
+          align === "center" ? "mx-auto max-w-3xl" : "max-w-3xl",
+        )}
+      >
         {title}
       </h2>
     </Reveal>

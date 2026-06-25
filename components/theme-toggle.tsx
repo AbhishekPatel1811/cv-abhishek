@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { FaSun, FaMoon } from "react-icons/fa6";
+import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -20,9 +20,9 @@ export function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle dark mode"
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-accent hover:text-accent"
+      className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-muted transition-colors hover:bg-surface hover:text-ink"
     >
-      {mounted ? (isDark ? <FaSun size={14} /> : <FaMoon size={13} />) : <span className="h-3.5 w-3.5" />}
+      {mounted ? (isDark ? <Sun className="size-4" /> : <Moon className="size-4" />) : <span className="h-4 w-4" />}
     </button>
   );
 }

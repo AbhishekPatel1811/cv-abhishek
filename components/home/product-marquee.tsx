@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 type Tile = {
   name: string;
@@ -54,59 +54,71 @@ const TILES: Tile[] = [
   },
 ];
 
-function Tile({ t }: { t: Tile }) {
+function Wordmark({ t }: { t: Tile }) {
   return (
     <Link
       href={`/work/${t.slug}`}
-      className="group/tile relative block h-[220px] w-[350px] shrink-0 overflow-hidden rounded-2xl border border-line sm:h-[260px] sm:w-[420px]"
+      title={t.tag}
+      className="group/word inline-flex shrink-0 items-center gap-2 text-muted transition-colors hover:text-ink"
     >
-      <Image
-        src={t.img}
-        alt={`${t.name} - ${t.tag}`}
-        fill
-        sizes="420px"
-        className="object-cover object-top transition-transform duration-500 group-hover/tile:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4">
-        <div>
-          <div className="font-clash text-lg font-semibold text-ink">
-            {t.name}
-          </div>
-          <div className="text-xs text-muted">{t.tag}</div>
-        </div>
-        {t.live && (
-          <span className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-bg/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-accent backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Live
-          </span>
-        )}
-      </div>
+      <span className="text-base font-medium tracking-tight whitespace-nowrap sm:text-lg">
+        {t.name}
+      </span>
+      {t.live && (
+        <span
+          aria-hidden
+          className="h-1.5 w-1.5 rounded-full border border-line bg-transparent transition-colors group-hover/word:bg-ink"
+        />
+      )}
     </Link>
   );
 }
 
-export function ProductMarquee() {
-  const row = [...TILES, ...TILES];
+function Divider() {
   return (
-    <section className="group border-y border-line bg-bg-2 py-8">
-      <div className="mx-auto mb-5 max-w-7xl px-5 sm:px-8">
-        <span className="font-mono text-xs uppercase tracking-[0.25em] text-faint">
-          Shipped in production - real products, real users
+    <span aria-hidden className="shrink-0 px-6 text-faint sm:px-9">
+      <span className="inline-block size-1 rotate-45 bg-current align-middle" />
+    </span>
+  );
+}
+
+function Row({ ariaHidden }: { ariaHidden?: boolean }) {
+  return (
+    <div
+      className="animate-marquee flex shrink-0 items-center group-hover:[animation-play-state:paused]"
+      aria-hidden={ariaHidden}
+    >
+      {TILES.map((t, i) => (
+        <span key={`${t.slug}-${i}`} className="flex items-center">
+          <Wordmark t={t} />
+          <Divider />
         </span>
-      </div>
-      <div className="marquee-mask relative flex gap-4 overflow-hidden">
-        <div className="animate-marquee flex shrink-0 gap-4 pr-4 group-hover:[animation-play-state:paused]">
-          {row.map((t, i) => (
-            <Tile key={`a-${i}`} t={t} />
-          ))}
+      ))}
+    </div>
+  );
+}
+
+export function ProductMarquee() {
+  return (
+    <section className="group relative border-y border-line bg-bg-2">
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl flex-col items-stretch gap-px",
+          "border-x border-line sm:flex-row sm:items-center",
+        )}
+      >
+        {/* eyebrow rail */}
+        <div className="flex shrink-0 items-center gap-2 border-line px-5 py-4 sm:border-r sm:px-8">
+          <span className="size-1.5 rounded-full bg-ink" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-faint whitespace-nowrap">
+            Live in production
+          </span>
         </div>
-        <div
-          className="animate-marquee flex shrink-0 gap-4 pr-4 group-hover:[animation-play-state:paused]"
-          aria-hidden
-        >
-          {row.map((t, i) => (
-            <Tile key={`b-${i}`} t={t} />
-          ))}
+
+        {/* marquee */}
+        <div className="marquee-mask relative flex flex-1 overflow-hidden py-4">
+          <Row />
+          <Row ariaHidden />
         </div>
       </div>
     </section>

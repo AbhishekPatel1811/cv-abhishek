@@ -1,6 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
+import { ArrowUpRight, Sparkles, Mic } from "lucide-react";
+import { SectionShell } from "@/components/section-shell";
+import { SectionHeading, Accent } from "@/components/section-heading";
+import { AppWindow } from "@/components/app-window";
+import { AnchorButton } from "@/components/anchor-button";
+import { Reveal } from "@/components/reveal";
 import { openChat } from "@/components/ai/chat-events";
 
 const PROMPTS = [
@@ -12,51 +17,78 @@ const PROMPTS = [
 
 export function AskAiSection() {
   return (
-    <section className="relative overflow-hidden bg-bg px-5 py-24 sm:px-8 lg:py-32">
-      <div className="accent-glow absolute inset-0" />
-      <div className="bg-dotgrid pointer-events-none absolute inset-0" />
+    <SectionShell padding="lg">
+      <SectionHeading
+        index="05"
+        kicker="Ask my AI"
+        align="center"
+        title={
+          <>
+            Don&apos;t read my CV. <Accent>Interrogate</Accent> it.
+          </>
+        }
+      />
 
-      <div className="relative mx-auto max-w-4xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="mx-auto mb-6 flex w-fit items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-muted">
-            <span className="h-2 w-2 rounded-full bg-accent" />
-            Powered by RAG over my real work
+      <Reveal className="mx-auto max-w-2xl">
+        <AppWindow title="ask-abhishek.ai — chat" bodyClassName="p-0">
+          <div className="space-y-5 p-5 sm:p-6">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md border border-line bg-surface">
+                <Sparkles className="size-3.5 text-ink-soft" />
+              </span>
+              <p className="text-sm leading-relaxed text-ink-soft">
+                Hi — I&apos;m Abhishek&apos;s AI. I answer in first person, grounded in his real
+                projects, stack and career. Ask me anything, or start with one of these:
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pl-10">
+              {PROMPTS.map((p) => (
+                <AnchorButton
+                  key={p}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => openChat(p)}
+                >
+                  {p}
+                </AnchorButton>
+              ))}
+            </div>
           </div>
-          <h2 className="font-clash text-[clamp(2.2rem,5vw,4rem)] font-semibold leading-[1.02] tracking-[-0.02em] text-ink">
-            Don&apos;t read my CV.
-            <br />
-            <span className="text-accent">Interrogate it.</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
-            Ask my AI anything about my projects, stack and career. It answers in first person,
-            grounded in real work, and cites where the answer came from. Voice mode too.
-          </p>
 
-          <div className="mt-9 flex flex-wrap justify-center gap-2.5">
-            {PROMPTS.map((p) => (
-              <button
-                key={p}
-                onClick={() => openChat(p)}
-                className="rounded-full border border-line bg-surface/70 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-accent hover:text-ink"
-              >
-                {p}
-              </button>
-            ))}
+          <div className="flex items-center gap-3 border-t border-line bg-surface/40 px-5 py-3 sm:px-6">
+            <span className="font-mono text-[11px] tracking-wide text-faint">&gt;</span>
+            <span className="flex-1 truncate text-sm text-muted">
+              Ask about my work…
+            </span>
+            <button
+              type="button"
+              onClick={() => openChat()}
+              aria-label="Voice mode"
+              className="flex size-8 items-center justify-center rounded-md border border-line text-ink-soft transition-colors hover:text-ink"
+            >
+              <Mic className="size-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => openChat()}
+              aria-label="Send"
+              className="flex size-8 items-center justify-center rounded-md bg-accent text-accent-ink transition-transform hover:scale-105"
+            >
+              <ArrowUpRight className="size-4" />
+            </button>
           </div>
+        </AppWindow>
+      </Reveal>
 
-          <button
-            onClick={() => openChat()}
-            className="mt-8 rounded-full bg-accent px-7 py-3.5 text-base font-semibold text-[color:var(--color-accent-ink)] transition-transform hover:scale-[1.03]"
-          >
-            Start the conversation &rarr;
-          </button>
-        </motion.div>
-      </div>
-    </section>
+      <Reveal delay={0.1} className="mt-10 flex flex-col items-center gap-4 text-center">
+        <AnchorButton onClick={() => openChat()} size="lg" arrow magnetic>
+          Ask my AI
+        </AnchorButton>
+        <p className="max-w-md font-mono text-[11px] uppercase tracking-[0.16em] text-faint">
+          Answers in first person · grounded in real work · with citations + voice
+        </p>
+      </Reveal>
+    </SectionShell>
   );
 }

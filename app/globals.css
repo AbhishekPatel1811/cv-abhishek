@@ -3,61 +3,64 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
-  THEME TOKENS - shadcn / tweakcn convention.
+  THEME TOKENS - shadcn / tweakcn convention (monochrome "developer-mode" system).
   To re-theme: design at https://tweakcn.com, then paste its `:root {}` and `.dark {}`
   VALUE blocks over the two blocks below. Keep the `@theme inline` mapping that follows -
   it wires these variables into every component in the site.
 */
 :root {
-  --background: oklch(1.0000 0 0);
-  --foreground: oklch(0.3211 0 0);
-  --card: oklch(1.0000 0 0);
-  --card-foreground: oklch(0.3211 0 0);
-  --popover: oklch(1.0000 0 0);
-  --popover-foreground: oklch(0.3211 0 0);
-  --primary: oklch(0.6231 0.1880 259.8145);
-  --primary-foreground: oklch(1.0000 0 0);
-  --secondary: oklch(0.9670 0.0029 264.5419);
-  --secondary-foreground: oklch(0.4461 0.0263 256.8018);
-  --muted: oklch(0.9846 0.0017 247.8389);
-  --muted-foreground: oklch(0.5510 0.0234 264.3637);
-  --accent: oklch(0.9514 0.0250 236.8242);
-  --accent-foreground: oklch(0.3791 0.1378 265.5222);
-  --border: oklch(0.9276 0.0058 264.5313);
-  --input: oklch(0.9276 0.0058 264.5313);
-  --ring: oklch(0.6231 0.1880 259.8145);
-  --amber: hsl(35 92% 42%);
-  --radius: 0.9rem;
+  --background: oklch(0.9900 0 0);
+  --foreground: oklch(0 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover: oklch(0.9900 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9400 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.9700 0 0);
+  --muted-foreground: oklch(0.4400 0 0);
+  --accent: oklch(0.9400 0 0);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.6300 0.1900 23.0300);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9200 0 0);
+  --input: oklch(0.9400 0 0);
+  --ring: oklch(0 0 0);
+  --amber: oklch(0.7000 0.1400 75);
+  --radius: 0.5rem;
 }
 
 .dark {
-  /* deepened to a faintly-blue near-black (keeps the tweakcn blue primary) */
-  --background: oklch(0.1500 0.0120 264);
-  --foreground: oklch(0.9219 0 0);
-  --card: oklch(0.1950 0.0120 264);
-  --card-foreground: oklch(0.9219 0 0);
-  --popover: oklch(0.1950 0.0120 264);
-  --popover-foreground: oklch(0.9219 0 0);
-  --primary: oklch(0.6231 0.1880 259.8145);
-  --primary-foreground: oklch(1.0000 0 0);
-  --secondary: oklch(0.2150 0.0120 264);
-  --secondary-foreground: oklch(0.9219 0 0);
-  --muted: oklch(0.1950 0.0100 264);
-  --muted-foreground: oklch(0.7155 0.0150 264);
-  --accent: oklch(0.3791 0.1378 265.5222);
-  --accent-foreground: oklch(0.8823 0.0571 254.1284);
-  --border: oklch(0.2750 0.0120 264);
-  --input: oklch(0.2750 0.0120 264);
-  --ring: oklch(0.6231 0.1880 259.8145);
-  --amber: hsl(38 95% 60%);
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.1400 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.1800 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(1 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.2500 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.2300 0 0);
+  --muted-foreground: oklch(0.7200 0 0);
+  --accent: oklch(0.3200 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6900 0.2000 23.9100);
+  --destructive-foreground: oklch(0 0 0);
+  --border: oklch(0.2600 0 0);
+  --input: oklch(0.3200 0 0);
+  --ring: oklch(0.7200 0 0);
+  --amber: oklch(0.8000 0.1500 80);
 }
 
 @theme inline {
-  /* type */
-  --font-sans: "IBM Plex Sans", var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: "Sora", "IBM Plex Sans", var(--font-geist-sans), sans-serif;
-  --font-serif: "IBM Plex Sans", var(--font-geist-sans), sans-serif;
+  /* type - Geist (loaded via next/font in layout.tsx) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
 
   /* app tokens -> theme variables (everything themes via these) */
   --color-bg: var(--background);
@@ -66,20 +69,16 @@
   --color-surface-2: var(--muted);
   --color-line: var(--border);
   --color-ink: var(--foreground);
-  --color-ink-soft: color-mix(in oklab, var(--foreground) 82%, var(--background));
+  --color-ink-soft: color-mix(in oklab, var(--foreground) 78%, var(--background));
   --color-muted: var(--muted-foreground);
-  --color-faint: color-mix(in oklab, var(--muted-foreground) 70%, var(--background));
+  --color-faint: color-mix(in oklab, var(--muted-foreground) 64%, var(--background));
   --color-accent: var(--primary);
   --color-accent-ink: var(--primary-foreground);
   --color-amber: var(--amber);
 
-  /* Aceternity Aurora Background */
-  --animate-aurora: aurora 60s linear infinite;
-}
-
-@keyframes aurora {
-  from { background-position: 50% 50%, 50% 50%; }
-  to { background-position: 350% 50%, 350% 50%; }
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
 @layer base {
@@ -97,20 +96,19 @@
     background-color: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv01";
   }
   ::selection {
-    background: var(--color-accent);
-    color: var(--color-accent-ink);
+    background: var(--color-ink);
+    color: var(--color-bg);
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.028em;
   }
 }
 
-/* ---- font helpers ---- */
+/* ---- font helpers (all resolve to Geist now; kept so existing classNames don't break) ---- */
 .font-clash   { font-family: var(--font-display); }
 .font-general { font-family: var(--font-sans); }
 .font-satoshi { font-family: var(--font-sans); }
@@ -118,31 +116,21 @@
 .font-serif   { font-family: var(--font-serif); }
 .font-mono    { font-family: var(--font-mono); }
 
-/* ---- atmosphere ---- */
+/* ---- structural blueprint grid (faint 1px lines, masked) ---- */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 78%);
+  opacity: 0.6;
+}
 .bg-dotgrid {
   background-image: radial-gradient(circle at center, var(--color-line) 1px, transparent 1px);
-  background-size: 26px 26px;
+  background-size: 22px 22px;
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-}
-.accent-glow::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 50% 45% at 50% 8%,
-    color-mix(in oklab, var(--color-accent) 20%, transparent),
-    transparent 70%
-  );
-  pointer-events: none;
-}
-.grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ---- marquee ---- */
@@ -150,7 +138,7 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.animate-marquee { animation: marquee 32s linear infinite; }
+.animate-marquee { animation: marquee 36s linear infinite; }
 .marquee-mask {
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -162,29 +150,6 @@
   100% { transform: translateY(220%); }
 }
 .animate-scroll-down { animation: scroll-down 1.7s ease-in-out infinite; }
-
-/* ---- halftone texture for image cards ---- */
-.halftone {
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.55) 1px, transparent 1px);
-  background-size: 4px 4px;
-}
-
-/* ---- animated accent shimmer (theme-aware) ---- */
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.accent-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--color-accent),
-    color-mix(in oklab, var(--color-accent) 38%, white),
-    var(--color-accent)
-  );
-  background-size: 200% 100%;
-  animation: gradient-shift 4s ease infinite;
-}
 
 /* ---- loader no-JS fallback ---- */
 @keyframes loader-autohide {
@@ -199,5 +164,5 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .animate-marquee, .loader-auto, .animate-scroll-down, .accent-shimmer { animation: none; }
+  .animate-marquee, .loader-auto, .animate-scroll-down { animation: none; }
 }
