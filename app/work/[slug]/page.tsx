@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowUpRight, ExternalLink, Lock } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { projects, getProject } from "@/lib/content/projects";
 import { profile } from "@/lib/content/profile";
+import { projectJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { Reveal } from "@/components/reveal";
 import { Pill } from "@/components/pill";
 import { AppWindow } from "@/components/app-window";
@@ -95,27 +96,21 @@ export default async function CaseStudyPage({
   const idx = projects.findIndex((p) => p.slug === slug);
   const next = projects[(idx + 1) % projects.length];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.name,
-    headline: project.tagline,
-    abstract: project.problem,
-    creator: {
-      "@type": "Person",
-      name: profile.name,
-      url: "https://abhishekpatel.dev",
-    },
-    keywords: project.stack.join(", "),
-    ...(project.liveUrl ? { url: project.liveUrl } : {}),
-    ...(project.year ? { dateCreated: String(project.year) } : {}),
-  };
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Work", path: "/work" },
+    { name: project.name, path: `/work/${project.slug}` },
+  ]);
 
   return (
     <article className="bg-bg px-5 pb-24 pt-28 sm:px-8 lg:pt-36">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd(project)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
       <div className="mx-auto max-w-4xl">

@@ -7,6 +7,7 @@ import { SkillsSection } from "@/components/home/skills-section";
 import { EducationSection } from "@/components/home/education-section";
 import { Contact } from "@/components/home/contact";
 import { profile } from "@/lib/content/profile";
+import { profilePageJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About - Abhishek Patel",
@@ -28,8 +29,21 @@ const NARRATIVE = [
 ];
 
 export default function AboutPage() {
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ]);
+
   return (
     <div className="bg-bg">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* hero */}
       <section className="relative border-b border-line bg-bg">
         <div className="mx-auto w-full max-w-7xl border-x border-line px-5 pb-20 pt-32 sm:px-8 lg:pt-40">

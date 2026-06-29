@@ -57,7 +57,7 @@ export function Story() {
         <Reveal delay={0.08}>
           <figure className="overflow-hidden rounded-xl border border-line bg-bg-2">
             <Image
-              src="/abhishek.jpeg"
+              src="/abhishek.png"
               alt={profile.name}
               width={640}
               height={720}

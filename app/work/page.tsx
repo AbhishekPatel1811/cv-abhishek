@@ -4,6 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { Accent } from "@/components/section-heading";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/content/projects";
+import { workCollectionJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Work - Abhishek Patel",
@@ -12,8 +13,21 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Work", path: "/work" },
+  ]);
+
   return (
     <div className="bg-bg">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workCollectionJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* hero header */}
       <section className="border-b border-line">
         <div className="mx-auto max-w-7xl border-x border-line px-5 pb-16 pt-32 sm:px-8 lg:pb-20 lg:pt-40">

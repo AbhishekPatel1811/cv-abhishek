@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -17,11 +18,19 @@ const LINKS = [
 
 function Mark() {
   return (
-    <Link href="/" className="flex items-center gap-2.5">
-      <span className="flex h-7 w-7 items-center justify-center rounded-md bg-ink font-mono text-sm font-bold text-bg">
-        A
+    <Link href="/" className="flex items-center gap-2.5" data-cursor="hover">
+      <span className="relative h-8 w-8 overflow-hidden rounded-full border border-line">
+        <Image
+          src="/abhishek.png"
+          alt="Abhishek Patel"
+          fill
+          sizes="32px"
+          className="object-cover"
+        />
       </span>
-      <span className="text-[15px] font-semibold tracking-tight text-ink">Abhishek Patel</span>
+      <span className="text-sm font-semibold tracking-tight text-ink">
+        Abhishek Patel
+      </span>
     </Link>
   );
 }
@@ -41,7 +50,9 @@ export function Nav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-[100] border-b transition-colors duration-300",
-        scrolled ? "border-line bg-bg/80 backdrop-blur-xl" : "border-transparent",
+        scrolled
+          ? "border-line bg-bg/80 backdrop-blur-xl"
+          : "border-transparent",
       )}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-5 py-3.5 sm:px-8">
@@ -51,7 +62,11 @@ export function Nav() {
 
         <nav className="hidden items-center gap-8 justify-self-center text-sm text-muted md:flex">
           {LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="transition-colors hover:text-ink">
+            <Link
+              key={l.href}
+              href={l.href}
+              className="transition-colors hover:text-ink"
+            >
               {l.label}
             </Link>
           ))}
@@ -78,7 +93,12 @@ export function Nav() {
         <div className="border-t border-line bg-bg/95 px-5 py-4 backdrop-blur-xl md:hidden">
           <nav className="flex flex-col gap-4 text-base text-muted">
             {LINKS.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="hover:text-ink">
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="hover:text-ink"
+              >
                 {l.label}
               </Link>
             ))}

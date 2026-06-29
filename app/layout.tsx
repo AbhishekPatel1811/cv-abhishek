@@ -14,7 +14,7 @@ import { personJsonLd, websiteJsonLd, siteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Abhishek Patel - AI-Native Full-Stack Engineer",
+    default: "Abhishek Patel - Full-Stack Engineer",
     template: "%s",
   },
   description:
@@ -28,7 +28,19 @@ export const metadata: Metadata = {
     "AI SaaS",
     "Mumbai",
   ],
-  authors: [{ name: "Abhishek Patel" }],
+  authors: [
+    { name: "Abhishek Patel", url: "https://github.com/AbhishekPatel1811" },
+  ],
+  creator: "Abhishek Patel",
+  publisher: "Abhishek Patel",
+  applicationName: "Abhishek Patel",
+  category: "technology",
+  appleWebApp: {
+    capable: true,
+    title: "Abhishek Patel",
+    statusBarStyle: "default",
+  },
+  formatDetection: { telephone: false },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -63,7 +75,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           <MotionConfig reducedMotion="user">
             <Loader />
             <SmoothScroll>
